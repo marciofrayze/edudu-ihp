@@ -16,10 +16,10 @@ instance View WelcomeView where
                   </h2>
 
                   <p style="margin-top: 1rem; font-size: 1.75rem; font-weight: 600; color:hsla(196, 13%, 80%, 1)">
-                     Edudu is a place where the school staff, stududents and parents can communicate in a easy and pragmatic way.
+                     Edudu is a place where the school staff, students and parents can communicate in a easy and pragmatic way.
                   </p>
 
-                  <a href="/Messages" style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;">
+                  <a href={pathTo MessagesAction} style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;">
                      Go to the messages board
                   </a>
               </div>
@@ -27,7 +27,7 @@ instance View WelcomeView where
 
          <div style="max-width: 800px; margin-left: auto; margin-right: auto; margin-top: 4rem">
               <p style="color: hsla(196, 13%, 50%, 1); margin-top: 4rem">
-                 Copyleft 2021 - Marcio Frayze David. Source available at: https://github.com/marciofrayze/edudu
+                 Copyleft 2021 - Marcio Frayze David (marcio@segunda.tech)
               </p>
          </div> 
 |]

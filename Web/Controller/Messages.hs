@@ -8,7 +8,9 @@ import Web.View.Messages.Show
 
 instance Controller MessagesController where
     action MessagesAction = do
-        messages <- query @Message |> fetch
+        messages <- query @Message
+          |> orderByDesc #createdAt
+          |> fetch
         render IndexView { .. }
 
     action NewMessageAction = do
@@ -53,3 +55,5 @@ instance Controller MessagesController where
 
 buildMessage message = message
     |> fill @["title","body"]
+    |> validateField #title nonEmpty
+    |> validateField #body nonEmpty

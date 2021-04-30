@@ -18,6 +18,6 @@ instance View NewView where
 renderForm :: Message -> Html
 renderForm message = formFor message [hsx|
     {(textField #title)}
-    {(textField #body)}
+    {(textareaField #body)}
     {submitButton}
 |]

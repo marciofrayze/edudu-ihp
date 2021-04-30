@@ -12,3 +12,13 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 
+SET SESSION AUTHORIZATION DEFAULT;
+
+ALTER TABLE public.messages DISABLE TRIGGER ALL;
+
+INSERT INTO public.messages (id, title, body) VALUES ('fe11f0a3-1dbe-493f-a070-36867a1066e6', 'teste 123', 'Hello World!');
+
+
+ALTER TABLE public.messages ENABLE TRIGGER ALL;
+
+
