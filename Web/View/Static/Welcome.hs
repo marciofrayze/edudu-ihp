@@ -19,9 +19,10 @@ instance View WelcomeView where
                      Edudu is a place where the school staff, students and parents can communicate in a easy and pragmatic way.
                   </p>
 
-                  <a href={pathTo MessagesAction} style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;">
-                     Go to the messages board
-                  </a>
+                  <div style="margin-top: 2rem">
+                      {renderLogin currentUserOrNothing}
+                  </div>
+
               </div>
          </div>
 
@@ -30,4 +31,36 @@ instance View WelcomeView where
                  Copyleft 2021 - Marcio Frayze David (marcio@segunda.tech)
               </p>
          </div> 
+|]
+
+renderLogin :: Maybe User -> Html
+renderLogin user = 
+    case currentUserOrNothing of
+        Just currentUser -> renderLoggedInUser currentUser
+
+        Nothing -> renderNotLoggedInUser
+
+renderNotLoggedInUser :: Html
+renderNotLoggedInUser = [hsx|
+    <p>
+        <a href={pathTo NewSessionAction} style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;">
+           Login
+        </a> 
+        or
+        <a href={pathTo NewUserAction} style="color: white">
+           Create new account
+        </a> 
+    </p>
+|]
+
+renderLoggedInUser :: User -> Html
+renderLoggedInUser user = [hsx|
+    <p> 
+        Welcome back {get #email user} (if that's not you, please <a class="js-delete js-delete-no-confirm" href={DeleteSessionAction} style="color: white; font-weight: bold">logout</a>).
+    </p>
+    <p>
+        <a href={pathTo MessagesAction} style="margin-top: 2rem; background-color: #268bd2; padding: 1rem; border-radius: 3px; color: hsla(205, 69%, 98%, 1); text-decoration: none; font-weight: bold; display: inline-block; box-shadow: 0 4px 6px hsla(205, 69%, 0%, 0.08);  transition: box-shadow 0.2s; transition: transform 0.2s;">
+           Go to the messages board
+        </a>
+    </p>
 |]
