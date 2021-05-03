@@ -15,7 +15,7 @@ instance View ShowView where
         <p>{get #body message}</p>
 
         <p>{get #createdAt message |> timeAgo}</p>
-        <hr>
+
         <a href={EditMessageAction (get #id message)}>Edit</a> | 
         <a href={DeleteMessageAction (get #id message)} class="js-delete text-muted">Delete</a>
     |]
