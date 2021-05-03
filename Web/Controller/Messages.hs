@@ -44,7 +44,7 @@ instance Controller MessagesController where
                 Left message -> render NewView { .. } 
                 Right message -> do
                     message <- message |> createRecord
-                    setSuccessMessage "Message created"
+                    setSuccessMessage "Message posted"
                     redirectTo MessagesAction
 
     action DeleteMessageAction { messageId } = do
