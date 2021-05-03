@@ -9,13 +9,6 @@ instance View NewView where
         {renderForm user}
     |]
 
--- renderForm :: User -> Html
--- renderForm user = formFor user [hsx|
---     {(textField #email)}
---     {(passwordField #passwordHash)}
---     {submitButton}
--- |]
-
 renderForm :: User -> Html
 renderForm user = [hsx|
     <form method="POST" action={CreateUserAction}>
@@ -23,7 +16,7 @@ renderForm user = [hsx|
             <input name="email" value={get #email user} type="email" class="form-control" placeholder="E-mail" required="required" autofocus="autofocus" />
         </div>
         <div class="form-group">
-            <input name="password" type="password" class="form-control" placeholder="Password"/>
+            <input name="passwordHash" type="password" class="form-control" placeholder="Password"/>
         </div>
         <button type="submit" class="btn btn-primary btn-block">Create account</button>
     </form>

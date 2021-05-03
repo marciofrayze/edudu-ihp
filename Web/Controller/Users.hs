@@ -43,7 +43,9 @@ instance Controller UsersController where
                     user <- user
                         |> set #passwordHash hashed
                         |> createRecord
-                    setSuccessMessage "You have registered successfully"
+                    setSuccessMessage "You have registered successfully. Please login now."
+                    redirectTo NewSessionAction
+
 
     action DeleteUserAction { userId } = do
         user <- fetch userId
